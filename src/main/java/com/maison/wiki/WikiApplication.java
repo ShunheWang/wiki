@@ -1,7 +1,7 @@
 package com.maison.wiki;
 
 
-import org.apache.juli.logging.Log;
+import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -10,6 +10,7 @@ import org.springframework.core.env.ConfigurableEnvironment;
 
 
 @SpringBootApplication
+@MapperScan("com.maison.wiki.mapper")
 public class WikiApplication {
 
     private static final Logger LOG = LoggerFactory.getLogger(WikiApplication.class);
