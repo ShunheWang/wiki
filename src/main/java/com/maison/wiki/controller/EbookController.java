@@ -1,7 +1,8 @@
 package com.maison.wiki.controller;
 
-import com.maison.wiki.entity.Ebook;
+import com.maison.wiki.req.EbookReq;
 import com.maison.wiki.resp.CommonResp;
+import com.maison.wiki.resp.EbookResp;
 import com.maison.wiki.service.EbookService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,11 +21,11 @@ public class EbookController {
     @Resource
     private EbookService ebookService;
 
-    @GetMapping("/ebook/list")
-    public CommonResp list () {
-        CommonResp<List<Ebook>> responses = new CommonResp<>();
-        List<Ebook> ebooks = ebookService.list();
-        responses.setContent(ebooks);
+    @GetMapping("/list")
+    public CommonResp list (EbookReq req) {
+        CommonResp<List<EbookResp> > responses = new CommonResp<>();
+        List<EbookResp> list = ebookService.list(req);
+        responses.setContent(list);
         return responses;
     }
 }
