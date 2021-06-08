@@ -1,4 +1,4 @@
-GET http://localhost:8881/demo/list
+GET http://localhost:8881/demo1/list
 Accept: application/json
 
 ###

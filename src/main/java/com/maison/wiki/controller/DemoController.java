@@ -21,7 +21,7 @@ public class DemoController {
     @Resource
     private DemoService demoService;
 
-    @GetMapping("/demo/list")
+    @GetMapping("/demo1/list")
     public List<Demo> list () {
         return demoService.list();
     }
