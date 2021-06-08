@@ -18,22 +18,8 @@ import java.util.List;
 @RestController
 public class DemoController {
 
-    @Value("${demo.hello:Maison}")
-    private String demoHello;
-
     @Resource
     private DemoService demoService;
-
-//    @RequestMapping("/hello")
-    @GetMapping("/hello")
-    public String hello () {
-        return "Hello Maison" + demoHello;
-    }
-
-    @PostMapping("/hello/post")
-    public String helloPost (String name) {
-        return "Hello Maison, Post Request !, " + name;
-    }
 
     @GetMapping("/demo/list")
     public List<Demo> list () {
