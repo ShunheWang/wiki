@@ -2,9 +2,7 @@ package com.maison.wiki.controller;
 
 import com.maison.wiki.entity.Demo;
 import com.maison.wiki.service.DemoService;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
