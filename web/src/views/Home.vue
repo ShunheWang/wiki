@@ -44,22 +44,43 @@
       </a-menu>
     </a-layout-sider>
     <a-layout-content :style="{ background: '#fff', padding: '24px', margin: 0, minHeight: '280px' }">
-      Shunhe
+      <pre>{{ebooks}}</pre>
+      <pre>{{ebooks2}}</pre>
     </a-layout-content>
   </a-layout>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, onMounted, ref, reactive, toRef } from 'vue';
 import axios from 'axios';
 
 export default defineComponent({
   name: 'Home',
   setup() {
     console.log("setup");
-    axios.get("http://localhost:8881/list?name=Spring").then((response) => {
-      console.log(response);
+    // 1
+    const ebooks = ref(); // ref -> 响应式数据，用于将后端发来的数据实时的渲染到页面上
+    // 2
+    const ebooks1 = reactive({books : []});
+    // all init functions should be in it
+    onMounted(() => {
+      console.log("onMount()");
+      axios.get("http://localhost:8881/list?name=Spring").then((response) => {
+        const data = response.data;
+        // 1
+        ebooks.value = data.content;
+        // 2
+        ebooks1.books = data.content;
+        // console.log(ebooks);
+      });
     });
+
+    return {
+      // 1
+      ebooks,
+      // 2
+      ebooks2 : toRef(ebooks1,"books")
+    }
   }
 });
 </script>
