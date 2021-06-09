@@ -97,7 +97,7 @@ export default defineComponent({
     // all init functions should be in it
     onMounted(() => {
       console.log("onMount()");
-      axios.get("http://localhost:8881/list?name=Spring").then((response) => {
+      axios.get("http://localhost:8881/list").then((response) => {
         const data = response.data;
         // 1
         ebooks.value = data.content;
@@ -132,3 +132,13 @@ export default defineComponent({
   }
 });
 </script>
+
+<style scoped>
+  .ant-avatar {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 8%;
+    margin : 5px 0;
+  }
+</style>
