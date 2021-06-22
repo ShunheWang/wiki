@@ -94,7 +94,8 @@ export default defineComponent({
     // all init functions should be in it
     onMounted(() => {
       console.log("onMount()");
-      axios.get("http://localhost:8881/list").then((response) => {
+      // "http://localhost:8881/ebook/list"
+      axios.get("/ebook/list").then((response) => {
         const data = response.data;
         // 1
         ebooks.value = data.content;
