@@ -44,7 +44,7 @@
       </a-menu>
     </a-layout-sider>
     <a-layout-content :style="{ background: '#fff', padding: '24px', margin: 0, minHeight: '280px' }">
-      <a-list item-layout="vertical" size="large" :pagination="pagination" :data-source="ebooks" :grid="{ gutter: 20, column:3 }">
+      <a-list item-layout="vertical" size="large" :data-source="ebooks" :grid="{ gutter: 20, column:3 }">
 
         <template #renderItem="{ item }">
           <a-list-item key="item.name">
@@ -65,14 +65,13 @@
       </a-list>
     </a-layout-content>
   </a-layout>
-  {{ebooks}}
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, reactive, toRef } from 'vue';
+import { defineComponent, onMounted, ref} from 'vue';
 import axios from 'axios';
 
-const listData: Record<string, string>[] = [];
+const listData: any = [];
 
 for (let i = 0; i < 23; i++) {
   listData.push({
@@ -92,8 +91,6 @@ export default defineComponent({
     console.log("setup");
     // 1
     const ebooks = ref(); // ref -> 响应式数据，用于将后端发来的数据实时的渲染到页面上
-    // 2
-    const ebooks1 = reactive({books : []});
     // all init functions should be in it
     onMounted(() => {
       console.log("onMount()");
@@ -101,9 +98,6 @@ export default defineComponent({
         const data = response.data;
         // 1
         ebooks.value = data.content;
-        // 2
-        ebooks1.books = data.content;
-        // console.log(ebooks);
       });
     });
 
@@ -122,11 +116,8 @@ export default defineComponent({
     return {
       // 1
       ebooks,
-      // 2
-      ebooks2 : toRef(ebooks1,"books"),
       // test
       listData,
-      pagination,
       actions,
     }
   }

@@ -14,3 +14,8 @@ const icons : any = Icons;
 for (const i in icons) {
     app.component(i, icons[i]);
 }
+
+// 简单日志
+console.log('env:', process.env.NODE_ENV)
+console.log('prod:', process.env.VUE_APP_SERVER)
+
